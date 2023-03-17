@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Resolva</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      h2 {
+        margin-top: 50px;
+      }
+
+      p {
+        margin-top: 70px;
+        font-size: 18px;
+      }
+
+      input[type="radio"] {
+        margin-left: 0px;
+      }
+
+      button {
+        margin-top: 50px;
+        padding: 10px 20px;
+        background-color: lightblue;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button.highlighted {
+        background-color: blue;
+      }
+
+      .centered {
+        text-align: center;
+      }
+
+      .left-aligned {
+        text-align: left;
+      }
+
+      .parent {
+        width: 100%;
+      }
+
+      .child {
+        margin-left: 20px;
+        word-wrap: break-word;
+        word-break:break-all;
+      }
+
+      .child label{
+        margin-left: 5px;
+      }
+
+    </style>
+    <script>
+      function responder() {
+        // Código para importar o arquivo CSV
+        var radios = document.getElementsByName('answer');
+        
+        var userAnswer;
+
+        for (var i = 0; i < radios.length; i++) {
+          if (radios[i].checked) {
+            userAnswer = radios[i].value;
+            break;
+          }
+        }
+
+        if (userAnswer === correctAnswer) {
+          alert('Resposta correta!');
+        } else {
+          alert('Resposta incorreta. A resposta correta é: ' + correctAnswer + "\n" + descAnswer);
+        }
+      }
+
+      function updateButtonState() {
+        var radios = document.getElementsByName('answer');
+        var button = document.getElementById('responder-button');
+        for (var i = 0; i < radios.length; i++) {
+          if (radios[i].checked) {
+            button.classList.add('highlighted');
+            return;
+          }
+        }
+        button.classList.remove('highlighted');
+      }
+
+      const jsonData = {
+"pergunta": "Qual a diferença entre o enfisema pulmonar e a bronquite crônica?",
+"alternativas": {
+"a": "Apenas a gravidade dos sintomas é diferente",
+"b": "Ambas são caracterizadas pela inflamação dos brônquios",
+"c": "O enfisema pulmonar é caracterizado pela destruição dos alvéolos pulmonares, enquanto a bronquite crônica é caracterizada pela inflamação crônica dos brônquios",
+"d": "O enfisema pulmonar é caracterizado pela inflamação crônica dos brônquios, enquanto a bronquite crônica é caracterizada pela destruição dos alvéolos pulmonares"
+},
+"resposta": "c"
+}
+
+      const question = jsonData.pergunta;
+      const a = "a) " + jsonData.alternativas.a
+      const b = "b) " + jsonData.alternativas.b
+      const c = "c) " + jsonData.alternativas.c
+      const d = "d) " + jsonData.alternativas.d
+      const correctAnswer = jsonData.resposta;
+      const descAnswer = "";
+
+      //console.log(question,a,b,c,d)
+
+
+    </script>
+  </head>
+  <body>
+
+    <div class="parent centered">
+      <h2>Questão objetiva:</h2>
+      
+      <div class="child left-aligned" id="question">
+
+        <p>Qual o protocolo usado para enviar correios eletrônicos?</p>
+        <input type="radio" name="answer" value="a" id="a" onchange="updateButtonState()"><label for="a">a) </label><br>
+        <input type="radio" name="answer" value="b" id="b" onchange="updateButtonState()"><label for="b">b) </label><br>
+        <input type="radio" name="answer" value="c" id="c" onchange="updateButtonState()"><label for="c">c) </label><br>
+        <input type="radio" name="answer" value="d" id="d" onchange="updateButtonState()"><label for="d">d) </label><br><br>
+      
+      </div>
+
+        <button id="responder-button" onclick="responder()">Responder</button>
+    </div>
+
+
+  <script type="text/javascript">
+    
+    document.querySelector("#question p").textContent = question
+    document.querySelectorAll("#question label")[0].textContent = a
+    document.querySelectorAll("#question label")[1].textContent = b
+    document.querySelectorAll("#question label")[2].textContent = c
+    document.querySelectorAll("#question label")[3].textContent = d
+
+  </script>
+  </body>
+</html>
