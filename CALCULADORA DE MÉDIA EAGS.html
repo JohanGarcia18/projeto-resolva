@@ -201,9 +201,9 @@
             console.log(sqrt_resultado_pt+" e "+sqrt_resultado_espec)
 
             if(result_final>=5 && sqrt_resultado_pt>=0.5 && sqrt_resultado_espec>=1){
-                document.querySelector(".valor_final").innerHTML = "Sua média final é: <br><span style='color: #00D9FF; font-weight: bold; font-size:28px;'>" + result_final.toFixed(2) + "<br><br>Aprovado!</span>";
+                document.querySelector(".valor_final").innerHTML = "Sua média final é: <br><span style='color: #00D9FF; font-weight: bold; font-size:28px;'>" + result_final.toFixed(4) + "<br><br>Aprovado!</span>";
             }else{
-                document.querySelector(".valor_final").innerHTML = "Sua média final é: <br><span style='color: #00D9FF; font-weight: bold; font-size:28px;'>" + result_final.toFixed(2) + "<br><br>Reprovado!</span>";
+                document.querySelector(".valor_final").innerHTML = "Sua média final é: <br><span style='color: #00D9FF; font-weight: bold; font-size:28px;'>" + result_final.toFixed(4) + "<br><br>Reprovado!</span>";
             }
             
         }
